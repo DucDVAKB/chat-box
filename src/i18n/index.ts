@@ -11,7 +11,8 @@ const resources = {
         typing: 'Đang nhập...',
         welcome: 'Xin chào! Tôi có thể giúp gì cho bạn?',
         error: 'Có lỗi xảy ra. Vui lòng thử lại.',
-        close: 'Đóng'
+        close: 'Đóng',
+        online: 'Trực tuyến'
       }
     }
   },
@@ -24,7 +25,8 @@ const resources = {
         typing: 'Typing...',
         welcome: 'Hello! How can I help you?',
         error: 'Something went wrong. Please try again.',
-        close: 'Close'
+        close: 'Close',
+        online: 'Online'
       }
     }
   }

@@ -13,7 +13,7 @@ interface Message {
 interface ChatWidgetProps {
   apiUrl?: string;
   apiKey?: string;
-  language?: 'vi' | 'en';
+  language?: 'vi' | 'en' | 'ja';
   position?: 'bottom-right' | 'bottom-left';
   theme?: 'light' | 'dark';
   userId?: string;
@@ -23,7 +23,7 @@ interface ChatWidgetProps {
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   apiUrl = 'http://192.168.1.29/v1/chat-messages',
   apiKey = '',
-  language = 'vi',
+  language = 'en',
   position = 'bottom-right',
   theme = 'light',
   userId = 'user-' + Date.now(),
@@ -45,7 +45,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     if (messages.length === 0) {
       const welcomeMessage: Message = {
         id: 'welcome',
-        text: 'Xin chào! Tôi có thể giúp gì cho bạn?',
+        text: i18n.t('chat.welcome'),
         isUser: false,
         timestamp: new Date()
       };

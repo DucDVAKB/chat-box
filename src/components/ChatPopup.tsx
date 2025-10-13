@@ -72,7 +72,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
             <h3 className="font-semibold text-base text-white">{t('chat.title')}</h3>
             <div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <p className="text-xs text-white/90">Trực tuyến</p>
+              <p className="text-xs text-white/90">{t('chat.online')}</p>
             </div>
           </div>
         </div>

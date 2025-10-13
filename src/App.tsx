@@ -40,7 +40,7 @@ function App() {
       <ChatWidget 
         apiUrl="http://192.168.1.29/v1/chat-messages"
         apiKey="app-oNt6XuEFNAXf8L41avMPJkTD"
-        language="vi"
+        language="en"
         position="bottom-right"
         theme="light"
         userId="BaNaNe"

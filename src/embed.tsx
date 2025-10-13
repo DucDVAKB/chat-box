@@ -9,7 +9,7 @@ import './App.css'; // Import CSS để bundle vào
 interface WidgetConfig {
   apiUrl?: string;
   apiKey?: string;
-  language?: 'vi' | 'en';
+  language?: 'vi' | 'en' | 'ja';
   position?: 'bottom-right' | 'bottom-left';
   theme?: 'light' | 'dark';
   containerId?: string;
@@ -77,7 +77,7 @@ if (typeof window !== 'undefined') {
         const config: WidgetConfig = {
           apiUrl: script.getAttribute('data-api-url') || undefined,
           apiKey: script.getAttribute('data-api-key') || undefined,
-          language: (script.getAttribute('data-language') as 'vi' | 'en') || 'vi',
+          language: (script.getAttribute('data-language') as 'vi' | 'en' | 'ja') || 'vi',
           position: (script.getAttribute('data-position') as 'bottom-right' | 'bottom-left') || 'bottom-right',
           theme: (script.getAttribute('data-theme') as 'light' | 'dark') || 'light',
           userId: script.getAttribute('data-user-id') || undefined,

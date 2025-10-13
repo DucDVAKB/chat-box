@@ -29,6 +29,20 @@ const resources = {
         online: 'Online'
       }
     }
+  },
+  ja: {
+    translation: {
+      chat: {
+        title: 'チャット',
+        placeholder: 'メッセージを入力してください...',
+        send: '送信',
+        typing: '入力中...',
+        welcome: 'こんにちは！どのようにお手伝いしましょうか？',
+        error: 'エラーが発生しました。もう一度お試しください。',
+        close: '閉じる',
+        online: 'オンライン'
+      }
+    }
   }
 };
 

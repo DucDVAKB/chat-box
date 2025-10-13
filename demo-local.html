@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget Demo - Local</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: #856404;
+        }
+
+        .note strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Chat Widget Demo</h1>
+        <p class="subtitle">Nhúng chat widget vào trang HTML của bạn</p>
+
+        <div class="info-box">
+            <h3>📋 Hướng dẫn sử dụng</h3>
+            <p>Chat widget đã được tích hợp vào trang này. Nhấn vào biểu tượng chat ở góc dưới bên phải để bắt đầu trò chuyện!</p>
+        </div>
+
+        <div class="info-box">
+            <h3>✨ Tính năng</h3>
+            <ul class="feature-list">
+                <li>Giao diện đẹp mắt với màu pastel</li>
+                <li>Tự động lưu conversation_id</li>
+                <li>Hỗ trợ đa ngôn ngữ (Tiếng Việt, English)</li>
+                <li>Responsive trên mọi thiết bị</li>
+                <li>Dễ dàng tích hợp vào bất kỳ website nào</li>
+                <li>Tùy chỉnh theme (light/dark)</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>💻 Cách nhúng vào website của bạn</h3>
+            <p><strong>Bước 1:</strong> Build project</p>
+            <div class="code-block">npm run build</div>
+
+            <p><strong>Bước 2:</strong> Copy file build vào thư mục website</p>
+            <div class="code-block">dist/chat-widget.umd.cjs</div>
+
+            <p><strong>Bước 3:</strong> Thêm script vào HTML</p>
+            <div class="code-block">&lt;!-- Load Chat Widget --&gt;
+&lt;script src="./dist/chat-widget.umd.cjs"&gt;&lt;/script&gt;
+&lt;script&gt;
+    window.initChatWidget({
+        apiUrl: 'http://192.168.1.29/v1/chat-messages',
+        apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD',
+        language: 'vi',
+        position: 'bottom-right',
+        theme: 'light',
+        userId: 'BaNaNe',
+        conversationId: ''
+    });
+&lt;/script&gt;</div>
+        </div>
+
+        <div class="note">
+            <strong>⚠️ Lưu ý:</strong>
+            Đảm bảo đường dẫn đến file <code>chat-widget.umd.cjs</code> là chính xác. 
+            Nếu file nằm trong thư mục khác, hãy điều chỉnh đường dẫn cho phù hợp.
+        </div>
+
+        <a href="https://github.com" class="button">📖 Xem tài liệu đầy đủ</a>
+    </div>
+
+    <!-- Load Chat Widget (React đã được bundle vào) -->
+    <link rel="stylesheet" href="./dist/chat-widget.css">
+    <script src="./dist/chat-widget.iife.js"></script>
+    <script>
+        // Khởi tạo widget với cấu hình
+        window.initChatWidget({
+            apiUrl: 'http://192.168.1.29/v1/chat-messages',
+            apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD',
+            language: 'vi',
+            position: 'bottom-right',
+            theme: 'light',
+            userId: 'BaNaNe',
+            conversationId: ''
+        });
+
+        console.log('✅ Chat Widget đã được khởi tạo thành công!');
+    </script>
+</body>
+</html>

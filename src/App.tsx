@@ -45,7 +45,7 @@ function App() {
         theme="light"
         userId="BaNaNe"
         conversationId=""
-        welcomeMessage="Chào cậu"
+        welcomeMessage="Konnichiwa! Watashi wa AKB48 no chatbot desu. Go shitsumon ga arimasu ka?"
         status={false}
         title="AKB Chatbot"
         showIcon={true}

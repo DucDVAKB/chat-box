@@ -83,15 +83,15 @@
 
 /* Message container scroll */
 .message-container {
-  max-height: calc(550px - 80px - 100px); /* popup height - header - input */
   overflow-y: auto;
   padding: 10px;
 }
+.message-container p{
+  padding: 5px;
+}
 
-@media (max-width: 480px) {
-  .message-container {
-    max-height: calc(100vh - 80px - 100px);
-  }
+.chat-input *{
+  padding: 5px;
 }
 
 /* Custom Scrollbar Styles */
@@ -134,11 +134,16 @@
 
 .message-item {
   animation: messageSlideIn 0.3s ease-out;
+  margin-bottom: 16px;
+}
+.messenge-context{
+  padding: 12px 8px;
 }
 
 /* Pastel background for header */
 .chat-header {
   background: #A7C7E7;
+  padding: 8px;
 }
 
 /* Glassmorphism effect for dark theme */

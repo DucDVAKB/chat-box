@@ -35,7 +35,7 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
         </div>
       )}
       <div className={`
-        flex-1 max-w-xs lg:max-w-md px-2 py-3 rounded-2xl
+        messenge-context flex-1 max-w-xs lg:max-w-md px-2 py-3 rounded-2xl
         ${message.isUser 
           ? (theme === 'dark' 
               ? 'bg-[#B8D4E8] text-gray-800' 

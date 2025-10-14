@@ -1,4 +1,6 @@
 import React from 'react';
+import userIconDefault from '../../public/user-icon.png';
+import botIconDefault from '../../public/bot-icon.png';
 
 interface Message {
   id: string;
@@ -23,15 +25,17 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
       minute: '2-digit' 
     });
   };
-  const userIconDefault = `user-icon.png`;
-  const botIconDefault = `bot-icon.png`;
+
+  // dùng import để bundler cung cấp đường dẫn chính xác sau build
+  const userIconSrc = userIcon || userIconDefault;
+  const botIconSrc = botIcon || botIconDefault;
   const fontSizeStyle = fontSize ? { fontSize: fontSize } : {};
 
   return (
     <div className={`flex justify-start items-start ${message.isUser ? 'flex-row-reverse' : 'flex-row'} message-item gap-1`}>
       {showIcon && (
         <div className="flex items-center space-x-2 flex-shrink-0">
-          <img src={message.isUser ? (userIcon ? userIcon : userIconDefault) : (botIcon ? botIcon : botIconDefault )} alt="Icon" className="w-9 h-9 rounded-full p-1 bg-gray-200" />
+          <img src={message.isUser ? userIconSrc : botIconSrc} alt="Icon" className="w-9 h-9 rounded-full p-1 bg-gray-200" />
         </div>
       )}
       <div className={`

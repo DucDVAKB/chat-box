@@ -13,11 +13,24 @@ interface Message {
 interface ChatWidgetProps {
   apiUrl?: string;
   apiKey?: string;
-  language?: 'vi' | 'en' | 'ja';
+  language?: 'vi' | 'en' | 'jp';
   position?: 'bottom-right' | 'bottom-left';
   theme?: 'light' | 'dark';
   userId?: string;
   conversationId?: string;
+  welcomeMessage?: string;
+  status?: boolean;
+  title?: string;
+  showIcon?: boolean;
+  botIcon?: string;
+  userIcon?: string;
+  chatboxWidth? : string;
+  chatboxHeight? : string;
+  fontSize? : string;
+  positionLeft?: string;
+  positionRight?: string;
+  positionTop?: string;
+  positionBottom?: string;
 }
 
 const ChatWidget: React.FC<ChatWidgetProps> = ({
@@ -27,7 +40,20 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   position = 'bottom-right',
   theme = 'light',
   userId = 'user-' + Date.now(),
-  conversationId: initialConversationId = ''
+  conversationId: initialConversationId = '',
+  welcomeMessage = '',
+  status = true,
+  title = '',
+  showIcon = false,
+  botIcon = '',
+  userIcon = '',
+  chatboxWidth = '',
+  chatboxHeight = '',
+  fontSize = '',    
+  positionLeft = '',
+  positionRight = '',
+  positionTop = '',
+  positionBottom = '',
 }) => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -43,13 +69,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   // Add welcome message
   useEffect(() => {
     if (messages.length === 0) {
-      const welcomeMessage: Message = {
+      const welcomeMessageData: Message = {
         id: 'welcome',
-        text: i18n.t('chat.welcome'),
+        text: welcomeMessage ? welcomeMessage : i18n.t('chat.welcome'),
         isUser: false,
         timestamp: new Date()
       };
-      setMessages([welcomeMessage]);
+      setMessages([welcomeMessageData]);
     }
   }, []);
 
@@ -128,9 +154,15 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
+  const positionStyle = {
+    ...(positionLeft ? { left: `${positionLeft}` } : {}),
+    ...(positionRight ? { right: `${positionRight}` } : {}),
+    ...(positionTop ? { top: `${positionTop}` } : {}),
+    ...(positionBottom ? { bottom: `${positionBottom}` } : {})
+  };
 
   return (
-    <div className={`chat-widget-container ${position === 'bottom-left' ? 'left-5' : 'right-5'}`}>
+    <div className={`chat-widget-container ${position === 'bottom-left' ? 'left-5' : 'right-5'}`} style={positionStyle}>
       <ChatBubble 
         isOpen={isOpen} 
         onClick={toggleChat}
@@ -143,6 +175,14 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           onSendMessage={handleSendMessage}
           onClose={() => setIsOpen(false)}
           theme={theme}
+          status={status}
+          title={title}
+          showIcon={showIcon}
+          botIcon={botIcon}
+          userIcon={userIcon}
+          chatboxWidth={chatboxWidth}
+          chatboxHeight={chatboxHeight}
+          fontSize={fontSize}
         />
       )}
     </div>

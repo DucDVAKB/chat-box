@@ -85,7 +85,7 @@
 .message-container {
   max-height: calc(550px - 80px - 100px); /* popup height - header - input */
   overflow-y: auto;
-  padding: 20px 16px;
+  padding: 10px;
 }
 
 @media (max-width: 480px) {

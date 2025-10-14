@@ -30,7 +30,7 @@ const resources = {
       }
     }
   },
-  ja: {
+  jp: {
     translation: {
       chat: {
         title: 'チャット',

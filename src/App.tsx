@@ -45,6 +45,13 @@ function App() {
         theme="light"
         userId="BaNaNe"
         conversationId=""
+        welcomeMessage="Chào cậu"
+        status={false}
+        title="AKB Chatbot"
+        showIcon={true}
+        fontSize="50px"
+        positionRight="100px"
+        positionBottom="100px"
       />
     </div>
   );

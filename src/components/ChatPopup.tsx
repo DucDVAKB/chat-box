@@ -16,6 +16,14 @@ interface ChatPopupProps {
   onSendMessage: (text: string) => void;
   onClose: () => void;
   theme?: 'light' | 'dark';
+  status?: boolean;
+  title?: string;
+  showIcon?: boolean;
+  botIcon?: string;
+  userIcon?: string;
+  chatboxWidth? : string;
+  chatboxHeight? : string;
+  fontSize? : string;
 }
 
 const ChatPopup: React.FC<ChatPopupProps> = ({
@@ -23,7 +31,15 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   isLoading,
   onSendMessage,
   onClose,
-  theme = 'light'
+  theme = 'light',
+  status = true,
+  title = '',
+  showIcon = false,
+  botIcon = '',
+  userIcon = '',
+  chatboxWidth = '',
+  chatboxHeight = '',
+  fontSize = '',
 }) => {
   const { t } = useTranslation();
   const [inputValue, setInputValue] = useState('');
@@ -50,13 +66,17 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
       handleSendMessage(inputValue);
     }
   };
+  const chatboxStyle = {
+    ...(chatboxWidth ? { width: `${chatboxWidth}` } : {}),
+    ...(chatboxHeight ? { height: `${chatboxHeight}` } : {})
+  };
 
   return (
     <div className={`
       chat-popup animate-slide-up
       ${theme === 'dark' ? 'dark-theme text-white' : 'bg-white text-gray-900'}
       flex flex-col justify-between h-full
-    `}>
+    `} style={chatboxStyle}>
       {/* Header */}
       <div className={`
         chat-header
@@ -69,11 +89,11 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold text-base text-white">{t('chat.title')}</h3>
-            <div className="flex items-center space-x-1">
+            <h3 className="font-semibold text-base text-white">{title ? title : t('chat.title')}</h3>
+            {status && (<div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               <p className="text-xs text-white/90">{t('chat.online')}</p>
-            </div>
+            </div>)}
           </div>
         </div>
         <button
@@ -102,7 +122,11 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
         messages={messages} 
         isLoading={isLoading}
         theme={theme}
+        showIcon={showIcon}
+        botIcon={botIcon}
+        userIcon={userIcon}
         messagesEndRef={messagesEndRef}
+        fontSize={fontSize}
       />
 
       {/* Input */}

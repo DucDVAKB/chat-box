@@ -12,10 +12,14 @@ interface MessageListProps {
   messages: Message[];
   isLoading: boolean;
   theme?: 'light' | 'dark';
+  showIcon?: boolean;
+  botIcon?: string;
+  userIcon?: string;
+  fontSize?: string;
   messagesEndRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, theme = 'light', messagesEndRef }) => {
+const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, theme = 'light', showIcon = false, botIcon = '', userIcon = '', fontSize = '', messagesEndRef }) => {
   return (
     <div className="message-container space-y-4 scroll-smooth">
       {messages.map((message) => (
@@ -23,6 +27,10 @@ const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, theme = 
           key={message.id}
           message={message}
           theme={theme}
+          showIcon={showIcon}
+          botIcon={botIcon}
+          userIcon={userIcon}
+          fontSize={fontSize}
         />
       ))}
       {isLoading && (

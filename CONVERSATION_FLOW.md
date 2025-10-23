@@ -146,8 +146,8 @@ const botResponse = data.answer || data.message || data.response || 'Xin lỗi, 
 
 ```tsx
 <ChatWidget 
-  apiUrl="http://192.168.1.29/v1/chat-messages"
-  apiKey="app-oNt6XuEFNAXf8L41avMPJkTD"
+  apiUrl=""
+  apiKey=""
   language="vi"
   userId="user-123"
   conversationId="" // Để trống cho cuộc hội thoại mới
@@ -158,8 +158,8 @@ const botResponse = data.answer || data.message || data.response || 'Xin lỗi, 
 
 ```javascript
 window.initChatWidget({
-  apiUrl: 'http://192.168.1.29/v1/chat-messages',
-  apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD',
+  apiUrl: '',
+  apiKey: '',
   language: 'vi',
   userId: 'user-123',
   conversationId: '' // Widget tự động quản lý conversation_id

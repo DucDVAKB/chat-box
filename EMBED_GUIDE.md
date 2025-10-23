@@ -33,8 +33,8 @@ Tạo file `index.html` hoặc sử dụng file HTML có sẵn:
     <script src="./dist/chat-widget.iife.js"></script>
     <script>
         window.initChatWidget({
-            apiUrl: 'http://192.168.1.29/v1/chat-messages',
-            apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD',
+            apiUrl: '',
+            apiKey: '',
             language: 'vi',
             position: 'bottom-right',
             theme: 'light',
@@ -97,8 +97,8 @@ Upload file `dist/chat-widget.umd.cjs` lên:
     <script src="https://your-domain.com/chat-widget.umd.cjs"></script>
     <script>
         window.initChatWidget({
-            apiUrl: 'http://192.168.1.29/v1/chat-messages',
-            apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD',
+            apiUrl: '',
+            apiKey: '',
             language: 'vi',
             position: 'bottom-right',
             theme: 'light',
@@ -118,8 +118,8 @@ Upload file `dist/chat-widget.umd.cjs` lên:
 ```javascript
 window.initChatWidget({
     // API Configuration
-    apiUrl: 'http://192.168.1.29/v1/chat-messages',  // Required: API endpoint
-    apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD',         // Required: API key
+    apiUrl: '',  // Required: API endpoint
+    apiKey: '',         // Required: API key
     
     // User Configuration
     userId: 'BaNaNe',                                 // Optional: User ID
@@ -140,8 +140,8 @@ window.initChatWidget({
 ```javascript
 // Cấu hình tối thiểu
 window.initChatWidget({
-    apiUrl: 'http://192.168.1.29/v1/chat-messages',
-    apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD'
+    apiUrl: '',
+    apiKey: ''
 });
 ```
 
@@ -150,8 +150,8 @@ window.initChatWidget({
 ```javascript
 // Cấu hình đầy đủ với theme dark
 window.initChatWidget({
-    apiUrl: 'http://192.168.1.29/v1/chat-messages',
-    apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD',
+    apiUrl: '',
+    apiKey: '',
     language: 'en',
     position: 'bottom-left',
     theme: 'dark',
@@ -376,7 +376,7 @@ window.initChatWidget({
 1. **Không hardcode API Key trong production**
    ```javascript
    // ❌ Không nên
-   apiKey: 'app-oNt6XuEFNAXf8L41avMPJkTD'
+   apiKey: 'app-1234657891234568798'
    
    // ✅ Nên dùng
    apiKey: process.env.CHAT_API_KEY

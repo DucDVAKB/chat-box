@@ -15,15 +15,16 @@ interface ChatPopupProps {
   isLoading: boolean;
   onSendMessage: (text: string) => void;
   onClose: () => void;
+  refreshConversation: () => void;
   theme?: 'light' | 'dark';
   status?: boolean;
   title?: string;
   showIcon?: boolean;
   botIcon?: string;
   userIcon?: string;
-  chatboxWidth? : string;
-  chatboxHeight? : string;
-  fontSize? : string;
+  chatboxWidth?: string;
+  chatboxHeight?: string;
+  fontSize?: string;
 }
 
 const ChatPopup: React.FC<ChatPopupProps> = ({
@@ -31,6 +32,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   isLoading,
   onSendMessage,
   onClose,
+  refreshConversation,
   theme = 'light',
   status = true,
   title = '',
@@ -96,30 +98,51 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
             </div>)}
           </div>
         </div>
-        <button
-          onClick={onClose}
-          className="p-2 rounded-full hover:bg-white/20 transition-all duration-200 text-white"
-          aria-label={t('chat.close')}
-        >
-          <svg 
-          className="w-4 h-4 text-white" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={2.5} 
-            d="M6 18L18 6M6 6l12 12" 
-          />
-        </svg>
-        </button>
+        <div>
+          <button
+            onClick={refreshConversation}
+            className="p-2 rounded-full hover:bg-white/20 transition-all duration-200 text-white"
+            aria-label={t('chat.close')}
+          >
+            <svg
+              className="w-4 h-4 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0114.9-2M20 14a8 8 0 01-14.9 2"
+              />
+            </svg>
+          </button>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full hover:bg-white/20 transition-all duration-200 text-white"
+            aria-label={t('chat.close')}
+          >
+            <svg
+              className="w-4 h-4 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Messages */}
-      <MessageList 
-        messages={messages} 
+      <MessageList
+        messages={messages}
         isLoading={isLoading}
         theme={theme}
         showIcon={showIcon}

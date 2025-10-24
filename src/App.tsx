@@ -38,8 +38,8 @@ function App() {
 
       {/* Chat Widget */}
       <ChatWidget 
-        apiUrl=""
-        apiKey=""
+        apiUrl="http://192.168.1.29/v1/chat-messages"
+        apiKey="app-vvUMFFFEbmcCL2qwxeEYZ0AU"
         language="en"
         position="bottom-right"
         theme="light"
@@ -52,6 +52,8 @@ function App() {
         fontSize="50px"
         positionRight="100px"
         positionBottom="100px"
+        chatboxWidth='500px'
+        chatboxHeight='699px'
       />
     </div>
   );

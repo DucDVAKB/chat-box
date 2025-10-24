@@ -24,9 +24,9 @@ interface ChatWidgetProps {
   showIcon?: boolean;
   botIcon?: string;
   userIcon?: string;
-  chatboxWidth? : string;
-  chatboxHeight? : string;
-  fontSize? : string;
+  chatboxWidth?: string;
+  chatboxHeight?: string;
+  fontSize?: string;
   positionLeft?: string;
   positionRight?: string;
   positionTop?: string;
@@ -49,7 +49,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   userIcon = '',
   chatboxWidth = '',
   chatboxHeight = '',
-  fontSize = '',    
+  fontSize = '',
   positionLeft = '',
   positionRight = '',
   positionTop = '',
@@ -119,16 +119,16 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       }
 
       const data = await response.json();
-      
+
       // Lưu conversation_id từ response để sử dụng cho các request tiếp theo
       if (data.conversation_id) {
         setConversationId(data.conversation_id);
         console.log('Conversation ID:', data.conversation_id);
       }
-      
+
       // Xử lý response từ API
       const botResponse = data.answer || data.message || data.response || 'Xin lỗi, tôi không thể trả lời ngay bây giờ.';
-      
+
       const botMessage: Message = {
         id: data.message_id || (Date.now() + 1).toString(),
         text: botResponse,
@@ -141,7 +141,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       console.error('Error sending message:', error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'Có lỗi xảy ra. Vui lòng thử lại.',
+        text: i18n.t('chat.error'),
         isUser: false,
         timestamp: new Date()
       };
@@ -163,8 +163,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   return (
     <div className={`chat-widget-container ${position === 'bottom-left' ? 'left-5' : 'right-5'}`} style={positionStyle}>
-      <ChatBubble 
-        isOpen={isOpen} 
+      <ChatBubble
+        isOpen={isOpen}
         onClick={toggleChat}
         theme={theme}
       />
@@ -174,6 +174,15 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           isLoading={isLoading}
           onSendMessage={handleSendMessage}
           onClose={() => setIsOpen(false)}
+          refreshConversation={() => {
+            setMessages([{
+              id: 'welcome',
+              text: welcomeMessage ? welcomeMessage : i18n.t('chat.welcome'),
+              isUser: false,
+              timestamp: new Date()
+            }]);
+            setConversationId('');
+          }}
           theme={theme}
           status={status}
           title={title}

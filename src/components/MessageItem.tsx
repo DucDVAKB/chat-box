@@ -3,6 +3,8 @@ import userIconDefault from '../../public/user-icon.png';
 import botIconDefault from '../../public/bot-icon.png';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+
 
 
 interface Message {
@@ -55,11 +57,12 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
         shadow-md hover:shadow-lg transition-shadow duration-200
       `}>
         <div
-          className="overflow-x-auto text-sm whitespace-pre-wrap leading-relaxed"
+          className="overflow-x-auto text-sm pre-line leading-relaxed"
           style={fontSizeStyle}
         >
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
             components={{
               table: (props) => (
                 <table className="min-w-full border rounded-2xl border-gray-400 border-collapse my-2" {...props} />

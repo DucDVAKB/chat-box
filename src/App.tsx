@@ -49,7 +49,7 @@ function App() {
         status={false}
         title="AKB Chatbot"
         showIcon={true}
-        fontSize="50px"
+        fontSize="15px"
         positionRight="100px"
         positionBottom="100px"
         chatboxWidth='500px'

@@ -1,6 +1,9 @@
 import React from 'react';
 import userIconDefault from '../../public/user-icon.png';
 import botIconDefault from '../../public/bot-icon.png';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 
 interface Message {
   id: string;
@@ -20,9 +23,9 @@ interface MessageItemProps {
 
 const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', showIcon = false, botIcon = '', userIcon = '', fontSize = '' }) => {
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('vi-VN', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
+    return date.toLocaleTimeString('vi-VN', {
+      hour: '2-digit',
+      minute: '2-digit'
     });
   };
 
@@ -40,21 +43,41 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
       )}
       <div className={`
         messenge-context flex-1 max-w-xs lg:max-w-md px-2 py-3 rounded-2xl
-        ${message.isUser 
-          ? (theme === 'dark' 
-              ? 'bg-[#B8D4E8] text-gray-800' 
-              : 'bg-[#A7C7E7] text-gray-800')
-          : (theme === 'dark' 
-              ? 'bg-gray-700 text-white' 
-              : 'bg-[#F5E6D3] text-gray-800')
+        ${message.isUser
+          ? (theme === 'dark'
+            ? 'bg-[#B8D4E8] text-gray-800'
+            : 'bg-[#A7C7E7] text-gray-800')
+          : (theme === 'dark'
+            ? 'bg-gray-700 text-white'
+            : 'bg-[#F5E6D3] text-gray-800')
         }
         ${message.isUser ? 'rounded-br-md' : 'rounded-bl-md'}
         shadow-md hover:shadow-lg transition-shadow duration-200
       `}>
-        <p className="text-sm whitespace-pre-wrap leading-relaxed" style={fontSizeStyle}>{message.text}</p>
+        <div
+          className="overflow-x-auto text-sm whitespace-pre-wrap leading-relaxed"
+          style={fontSizeStyle}
+        >
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              table: (props) => (
+                <table className="min-w-full border rounded-2xl border-gray-400 border-collapse my-2" {...props} />
+              ),
+              th: (props) => (
+                <th className="border border-gray-400 px-1 py-1 font-semibold" {...props} />
+              ),
+              td: (props) => (
+                <td className="border border-gray-400 px-1 py-1" {...props} />
+              ),
+            }}
+          >
+            {message.text}
+          </ReactMarkdown>
+        </div>
         <p className={`
           text-xs mt-1.5 opacity-60
-          ${message.isUser ? 'text-gray-700' : 'text-gray-600'}
+          ${message.isUser ? 'text-gray-700' : (theme === 'dark' ? 'text-white' : 'text-gray-600')}
         `}>
           {formatTime(message.timestamp)}
         </p>

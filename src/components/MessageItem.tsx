@@ -57,7 +57,7 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
         shadow-md hover:shadow-lg transition-shadow duration-200
       `}>
         <div
-          className="overflow-x-auto text-sm pre-line leading-relaxed"
+          className="overflowContainer overflow-x-auto text-sm pre-line leading-relaxed"
           style={fontSizeStyle}
         >
           <ReactMarkdown
@@ -65,17 +65,17 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
             rehypePlugins={[rehypeRaw]}
             components={{
               table: (props) => (
-                <table className="min-w-full border rounded-2xl border-gray-400 border-collapse my-2" {...props} />
+                <table className="customTable min-w-full border border-gray-400 border-collapse my-2" {...props} />
               ),
               th: (props) => (
-                <th className="border border-gray-400 px-1 py-1 font-semibold" {...props} />
+                <th className="customTh border border-gray-400 px-1 py-1 font-semibold" {...props} />
               ),
               td: (props) => (
-                <td className="border border-gray-400 px-1 py-1" {...props} />
+                <td className="customTd border border-gray-400 px-1 py-1" {...props} />
               ),
             }}
           >
-            {message.text}
+            {message.text.trim()}
           </ReactMarkdown>
         </div>
         <p className={`

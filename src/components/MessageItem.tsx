@@ -4,6 +4,7 @@ import botIconDefault from '../../public/bot-icon.png';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import remarkBreaks from 'remark-breaks';
 
 
 
@@ -61,7 +62,7 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
           style={fontSizeStyle}
         >
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkBreaks]}
             rehypePlugins={[rehypeRaw]}
             components={{
               li: ({node, ...props}) => (

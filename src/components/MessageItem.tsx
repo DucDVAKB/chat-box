@@ -64,6 +64,9 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
             components={{
+              li: ({node, ...props}) => (
+                <li style={fontSizeStyle} {...props} />
+              ),
               p: ({node, ...props}) => (
                 <p style={fontSizeStyle} {...props} />
               ),

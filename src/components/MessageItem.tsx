@@ -34,7 +34,7 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
   // dùng import để bundler cung cấp đường dẫn chính xác sau build
   const userIconSrc = userIcon || userIconDefault;
   const botIconSrc = botIcon || botIconDefault;
-  const fontSizeStyle = fontSize ? { fontSize: fontSize } : {};
+  const fontSizeStyle = fontSize ? { fontSize: fontSize, lineHeight: fontSize } : {};
 
   return (
     <div className={`flex justify-start items-start ${message.isUser ? 'flex-row-reverse' : 'flex-row'} message-item gap-1`}>
@@ -64,6 +64,9 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, theme = 'light', sho
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
             components={{
+              p: ({node, ...props}) => (
+                <p style={fontSizeStyle} {...props} />
+              ),
               table: (props) => (
                 <table className="customTable min-w-full border border-gray-400 border-collapse my-2" {...props} />
               ),

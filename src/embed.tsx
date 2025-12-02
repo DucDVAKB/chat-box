@@ -16,6 +16,11 @@ interface WidgetConfig {
   userId?: string;
   conversationId?: string;
   title?: string;
+  titleFontSize?: string;
+  mainColor?: string;
+  secondaryColor?: string;
+  titleFontColor?: string;
+  titleHeight?: string;
   status?: boolean;
   welcomeMessage?: string;
   showIcon?: boolean;
@@ -29,6 +34,17 @@ interface WidgetConfig {
   positionRight?: string;
   positionTop?: string;
   positionBottom?: string;
+  timeFontSize?: string;
+  timePosition?: 'left' | 'right';
+  chatboxBackgroundUser?: string;
+  chatboxBackgroundBot?: string;
+  chatboxBackgroundDarkUser?: string;
+  chatboxBackgroundDarkBot?: string;
+  chatboxTextColorUser?: string;
+  chatboxTextColorBot?: string;
+  chatboxTextColorDarkUser?: string;
+  chatboxTextColorDarkBot?: string;
+  paddingChatbox?: string;
 }
 
 // Global function to initialize the chat widget
@@ -51,6 +67,11 @@ const initChatWidget = (config: WidgetConfig = {}) => {
     welcomeMessage = '',
     status = true,
     title = '',
+    titleFontSize = '',
+    mainColor = '',
+    secondaryColor = '',
+    titleFontColor = '',
+    titleHeight = '',
     showIcon = false,
     botIcon = '',
     userIcon = '',
@@ -61,6 +82,17 @@ const initChatWidget = (config: WidgetConfig = {}) => {
     positionRight = '',
     positionTop = '',
     positionBottom = '',
+    timeFontSize= '',
+    timePosition= 'right',
+    chatboxBackgroundUser= '',
+    chatboxBackgroundBot= '',
+    chatboxBackgroundDarkUser= '',
+    chatboxBackgroundDarkBot= '',
+    chatboxTextColorUser= '',
+    chatboxTextColorBot= '',
+    chatboxTextColorDarkUser= '',
+    chatboxTextColorDarkBot= '',
+    paddingChatbox= '',
   } = config;
 
   // Check if container already exists
@@ -90,6 +122,11 @@ const initChatWidget = (config: WidgetConfig = {}) => {
       welcomeMessage,
       status,
       title,
+      titleFontSize,
+      mainColor,
+      secondaryColor,
+      titleFontColor,
+      titleHeight,
       showIcon,
       botIcon,
       userIcon,
@@ -100,7 +137,17 @@ const initChatWidget = (config: WidgetConfig = {}) => {
       positionRight,
       positionTop,
       positionBottom,
-
+      timeFontSize,
+      timePosition,
+      chatboxBackgroundUser,
+      chatboxBackgroundBot,
+      chatboxBackgroundDarkUser,
+      chatboxBackgroundDarkBot,
+      chatboxTextColorUser,
+      chatboxTextColorBot,
+      chatboxTextColorDarkUser,
+      chatboxTextColorDarkBot,
+      paddingChatbox,
     })
   );
 };
@@ -126,6 +173,11 @@ if (typeof window !== 'undefined') {
           welcomeMessage: script.getAttribute('data-wecome-message') || undefined,
           status: script.getAttribute('data-status') === 'true' || true,
           title: script.getAttribute('data-title') || undefined,
+          titleFontSize : script.getAttribute('data-title-font-size') || undefined,
+          mainColor: script.getAttribute('data-main-color') || undefined,
+          secondaryColor: script.getAttribute('data-secondary-color') || undefined,
+          titleFontColor: script.getAttribute('data-title-font-color') || undefined,
+          titleHeight: script.getAttribute('data-title-height') || undefined,
           showIcon: script.getAttribute('data-show-icon') === 'true' || false,
           botIcon: script.getAttribute('data-bot-icon') || undefined,
           userIcon: script.getAttribute('data-user-icon') || undefined,
@@ -136,6 +188,17 @@ if (typeof window !== 'undefined') {
           positionRight: script.getAttribute('data-position-right') || undefined,
           positionTop: script.getAttribute('data-position-top') || undefined,
           positionBottom: script.getAttribute('data-position-bottom') || undefined,
+          timeFontSize: script.getAttribute('data-time-font-size') || undefined,
+          timePosition: (script.getAttribute('data-time-position') as 'left' | 'right') || 'right',
+          chatboxBackgroundUser: script.getAttribute('data-chatbox-background-user') || undefined,
+          chatboxBackgroundBot: script.getAttribute('data-chatbox-background-bot') || undefined,
+          chatboxBackgroundDarkUser: script.getAttribute('data-chatbox-background-dark-user') || undefined,
+          chatboxBackgroundDarkBot: script.getAttribute('data-chatbox-background-dark-bot') || undefined,
+          chatboxTextColorUser: script.getAttribute('data-chatbox-text-color-user') || undefined,
+          chatboxTextColorBot: script.getAttribute('data-chatbox-text-color-bot') || undefined,
+          chatboxTextColorDarkUser: script.getAttribute('data-chatbox-text-color-dark-user') || undefined,
+          chatboxTextColorDarkBot: script.getAttribute('data-chatbox-text-color-dark-bot') || undefined,
+          paddingChatbox: script.getAttribute('data-padding-chatbox') || undefined,
         };
         initChatWidget(config);
       }

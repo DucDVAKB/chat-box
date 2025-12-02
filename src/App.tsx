@@ -50,10 +50,22 @@ function App() {
         title="AKB Chatbot"
         showIcon={true}
         fontSize="15px"
-        positionRight="100px"
-        positionBottom="100px"
-        chatboxWidth='500px'
-        chatboxHeight='699px'
+        positionRight="10px"
+        positionBottom="10px"
+        chatboxWidth='399px'
+        chatboxHeight='399px'
+        titleHeight='55px'
+        titleFontSize='15px'
+        timeFontSize='10px'
+        timePosition='right'
+        paddingChatbox='10px'
+        mainColor='#ff4a4a'
+        secondaryColor='violet'
+        titleFontColor='white'
+        chatboxBackgroundBot='blueviolet'
+        chatboxBackgroundUser='#61ffea'
+        chatboxTextColorBot='white'
+        chatboxTextColorUser='black'
       />
     </div>
   );

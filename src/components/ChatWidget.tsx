@@ -21,6 +21,11 @@ interface ChatWidgetProps {
   welcomeMessage?: string;
   status?: boolean;
   title?: string;
+  titleFontSize?: string;
+  mainColor?: string;
+  secondaryColor?: string;
+  titleFontColor?: string;
+  titleHeight?: string;
   showIcon?: boolean;
   botIcon?: string;
   userIcon?: string;
@@ -31,6 +36,17 @@ interface ChatWidgetProps {
   positionRight?: string;
   positionTop?: string;
   positionBottom?: string;
+  timeFontSize?: string;
+  timePosition?: 'left' | 'right';
+  chatboxBackgroundUser?: string;
+  chatboxBackgroundBot?: string;
+  chatboxBackgroundDarkUser?: string;
+  chatboxBackgroundDarkBot?: string;
+  chatboxTextColorUser?: string;
+  chatboxTextColorBot?: string;
+  chatboxTextColorDarkUser?: string;
+  chatboxTextColorDarkBot?: string;
+  paddingChatbox?: string;
 }
 
 const ChatWidget: React.FC<ChatWidgetProps> = ({
@@ -44,6 +60,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   welcomeMessage = '',
   status = true,
   title = '',
+  titleFontSize = '',
+  mainColor = '',
+  secondaryColor = '',
+  titleFontColor = '',
+  titleHeight = '',
   showIcon = false,
   botIcon = '',
   userIcon = '',
@@ -54,6 +75,17 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   positionRight = '',
   positionTop = '',
   positionBottom = '',
+  timeFontSize= '',
+  timePosition= 'right',
+  chatboxBackgroundUser= '',
+  chatboxBackgroundBot= '',
+  chatboxBackgroundDarkUser= '',
+  chatboxBackgroundDarkBot= '',
+  chatboxTextColorUser= '',
+  chatboxTextColorBot= '',
+  chatboxTextColorDarkUser= '',
+  chatboxTextColorDarkBot= '',
+  paddingChatbox= '',
 }) => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -158,7 +190,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     ...(positionLeft ? { left: `${positionLeft}` } : {}),
     ...(positionRight ? { right: `${positionRight}` } : {}),
     ...(positionTop ? { top: `${positionTop}` } : {}),
-    ...(positionBottom ? { bottom: `${positionBottom}` } : {})
+    ...(positionBottom ? { bottom: `${positionBottom}` } : {}),
   };
 
   return (
@@ -167,6 +199,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         isOpen={isOpen}
         onClick={toggleChat}
         theme={theme}
+        mainColor={mainColor}
       />
       {isOpen && (
         <ChatPopup
@@ -186,12 +219,28 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           theme={theme}
           status={status}
           title={title}
+          titleFontSize={titleFontSize}
+          mainColor={mainColor}
+          secondaryColor={secondaryColor}
+          titleFontColor={titleFontColor}
+          titleHeight={titleHeight}
           showIcon={showIcon}
           botIcon={botIcon}
           userIcon={userIcon}
           chatboxWidth={chatboxWidth}
           chatboxHeight={chatboxHeight}
           fontSize={fontSize}
+          timeFontSize={timeFontSize}
+          timePosition={timePosition}
+          chatboxBackgroundUser={chatboxBackgroundUser}
+          chatboxBackgroundBot={chatboxBackgroundBot}
+          chatboxBackgroundDarkUser={chatboxBackgroundDarkUser}
+          chatboxBackgroundDarkBot={chatboxBackgroundDarkBot}
+          chatboxTextColorUser={chatboxTextColorUser}
+          chatboxTextColorBot={chatboxTextColorBot}
+          chatboxTextColorDarkUser={chatboxTextColorDarkUser}
+          chatboxTextColorDarkBot={chatboxTextColorDarkBot}
+          paddingChatbox={paddingChatbox}
         />
       )}
     </div>

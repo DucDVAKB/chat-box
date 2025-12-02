@@ -19,12 +19,28 @@ interface ChatPopupProps {
   theme?: 'light' | 'dark';
   status?: boolean;
   title?: string;
+  titleFontSize?: string;
+  mainColor?: string;
+  secondaryColor?: string;
+  titleFontColor?: string;
+  titleHeight?: string;
   showIcon?: boolean;
   botIcon?: string;
   userIcon?: string;
   chatboxWidth?: string;
   chatboxHeight?: string;
   fontSize?: string;
+  timeFontSize?: string;
+  timePosition?: 'left' | 'right';
+  chatboxBackgroundUser?: string;
+  chatboxBackgroundBot?: string;
+  chatboxBackgroundDarkUser?: string;
+  chatboxBackgroundDarkBot?: string;
+  chatboxTextColorUser?: string;
+  chatboxTextColorBot?: string;
+  chatboxTextColorDarkUser?: string;
+  chatboxTextColorDarkBot?: string;
+  paddingChatbox?: string;
 }
 
 const ChatPopup: React.FC<ChatPopupProps> = ({
@@ -36,12 +52,28 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   theme = 'light',
   status = true,
   title = '',
+  titleFontSize = '',
+  mainColor = '',
+  secondaryColor = '',
+  titleFontColor = '',
+  titleHeight = '',
   showIcon = false,
   botIcon = '',
   userIcon = '',
   chatboxWidth = '',
   chatboxHeight = '',
   fontSize = '',
+  timeFontSize= '',
+  timePosition= 'right',
+  chatboxBackgroundUser= '',
+  chatboxBackgroundBot= '',
+  chatboxBackgroundDarkUser= '',
+  chatboxBackgroundDarkBot= '',
+  chatboxTextColorUser= '',
+  chatboxTextColorBot= '',
+  chatboxTextColorDarkUser= '',
+  chatboxTextColorDarkBot= '',
+  paddingChatbox= '',
 }) => {
   const { t } = useTranslation();
   const [inputValue, setInputValue] = useState('');
@@ -70,8 +102,19 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   };
   const chatboxStyle = {
     ...(chatboxWidth ? { width: `${chatboxWidth}` } : {}),
-    ...(chatboxHeight ? { height: `${chatboxHeight}` } : {})
+    ...(chatboxHeight ? { height: `${chatboxHeight}` } : {}),
+    ...(secondaryColor ? { background: `${secondaryColor}` } : {})
   };
+
+  const titleStyle = {
+    ...(mainColor ? { background: `${mainColor}` } : {}),
+    ...(titleHeight ? { height: `${titleHeight}` } : {}),
+  };
+  const titleTextStyle = {
+    ...(titleFontSize ? { fontSize: `${titleFontSize}` } : {}),
+    ...(titleFontColor ? { color: `${titleFontColor}` } : {}),
+  };
+  
 
   return (
     <div className={`
@@ -83,15 +126,15 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
       <div className={`
         chat-header
         flex items-center justify-between p-4 shadow-md
-      `}>
+      `} style={titleStyle}>
         <div className="flex items-center space-x-3 gap-2">
-          <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center ring-2 ring-white/30">
-            <svg className="w-8 h-8 p-0 text-white" fill="currentColor" viewBox="0 0 20 20">
+          <div className="w-6 h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center ring-2 ring-white/30">
+            <svg className="w-4 h-4 p-0 text-white" fill="currentColor" viewBox="0 0 20 20" style={titleTextStyle}>
               <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
             </svg>
           </div>
           <div className="flex ">
-            <h3 className="font-semibold text-base text-white m-0">{title ? title : t('chat.title')}</h3>
+            <h3 className="font-semibold text-base text-white m-0"  style={titleTextStyle}>{title ? title : t('chat.title')}</h3>
             {status && (<div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               <p className="text-xs text-white/90">{t('chat.online')}</p>
@@ -109,6 +152,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              style={titleTextStyle}
             >
               <path
                 strokeLinecap="round"
@@ -128,6 +172,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              style={titleTextStyle}
             >
               <path
                 strokeLinecap="round"
@@ -142,6 +187,8 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
 
       {/* Messages */}
       <MessageList
+        mainColor={mainColor}
+        secondaryColor={secondaryColor}
         messages={messages}
         isLoading={isLoading}
         theme={theme}
@@ -150,11 +197,22 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
         userIcon={userIcon}
         messagesEndRef={messagesEndRef}
         fontSize={fontSize}
+        timeFontSize={timeFontSize}
+        timePosition={timePosition}
+        chatboxBackgroundUser={chatboxBackgroundUser}
+        chatboxBackgroundBot={chatboxBackgroundBot}
+        chatboxBackgroundDarkUser={chatboxBackgroundDarkUser}
+        chatboxBackgroundDarkBot={chatboxBackgroundDarkBot}
+        chatboxTextColorUser={chatboxTextColorUser}
+        chatboxTextColorBot={chatboxTextColorBot}
+        chatboxTextColorDarkUser={chatboxTextColorDarkUser}
+        chatboxTextColorDarkBot={chatboxTextColorDarkBot}
+        paddingChatbox={paddingChatbox}
       />
 
       {/* Input */}
       <div className={`
-        chat-input px-4 border-t backdrop-blur-sm
+        chat-input px-4 backdrop-blur-sm
         ${theme === 'dark' ? 'border-gray-700 bg-gray-800/50' : 'border-gray-200 bg-gray-50/50'}
       `}>
         <MessageInput

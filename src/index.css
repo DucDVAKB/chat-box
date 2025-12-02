@@ -126,7 +126,10 @@
 /* Firefox scrollbar */
 .chat-popup * {
   scrollbar-width: thin;
-  scrollbar-color: #A7C7E7 transparent;
+}
+
+.custom-scrollbar {
+  scrollbar-color: var(--scrollbar-color) transparent;
 }
 
 /* Message animations */

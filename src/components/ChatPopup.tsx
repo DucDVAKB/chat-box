@@ -31,6 +31,7 @@ interface ChatPopupProps {
   chatboxHeight?: string;
   fontSize?: string;
   timeFontSize?: string;
+  timeFontColor?: string;
   timePosition?: 'left' | 'right';
   chatboxBackgroundUser?: string;
   chatboxBackgroundBot?: string;
@@ -64,6 +65,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   chatboxHeight = '',
   fontSize = '',
   timeFontSize= '',
+  timeFontColor= '',
   timePosition= 'right',
   chatboxBackgroundUser= '',
   chatboxBackgroundBot= '',
@@ -198,6 +200,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
         messagesEndRef={messagesEndRef}
         fontSize={fontSize}
         timeFontSize={timeFontSize}
+        timeFontColor={timeFontColor}
         timePosition={timePosition}
         chatboxBackgroundUser={chatboxBackgroundUser}
         chatboxBackgroundBot={chatboxBackgroundBot}

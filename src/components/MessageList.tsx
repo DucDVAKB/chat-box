@@ -19,6 +19,7 @@ interface MessageListProps {
   userIcon?: string;
   fontSize?: string;
   timeFontSize?: string;
+  timeFontColor?: string;
   timePosition?: 'left' | 'right';
   chatboxBackgroundUser?: string;
   chatboxBackgroundBot?: string;
@@ -43,6 +44,7 @@ const MessageList: React.FC<MessageListProps> = ({
   userIcon = '', 
   fontSize = '',
   timeFontSize= '',
+  timeFontColor= '',
   timePosition= 'right',
   chatboxBackgroundUser= '',
   chatboxBackgroundBot= '',
@@ -71,6 +73,7 @@ const MessageList: React.FC<MessageListProps> = ({
           userIcon={userIcon}
           fontSize={fontSize}
           timeFontSize={timeFontSize}
+          timeFontColor={timeFontColor}
           timePosition={timePosition}
           chatboxBackgroundUser={chatboxBackgroundUser}
           chatboxBackgroundBot={chatboxBackgroundBot}

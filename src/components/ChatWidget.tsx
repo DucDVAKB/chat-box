@@ -37,6 +37,7 @@ interface ChatWidgetProps {
   positionTop?: string;
   positionBottom?: string;
   timeFontSize?: string;
+  timeFontColor?: string;
   timePosition?: 'left' | 'right';
   chatboxBackgroundUser?: string;
   chatboxBackgroundBot?: string;
@@ -76,6 +77,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   positionTop = '',
   positionBottom = '',
   timeFontSize= '',
+  timeFontColor= '',
   timePosition= 'right',
   chatboxBackgroundUser= '',
   chatboxBackgroundBot= '',
@@ -231,6 +233,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           chatboxHeight={chatboxHeight}
           fontSize={fontSize}
           timeFontSize={timeFontSize}
+          timeFontColor={timeFontColor}
           timePosition={timePosition}
           chatboxBackgroundUser={chatboxBackgroundUser}
           chatboxBackgroundBot={chatboxBackgroundBot}

@@ -35,6 +35,7 @@ interface WidgetConfig {
   positionTop?: string;
   positionBottom?: string;
   timeFontSize?: string;
+  timeFontColor?: string;
   timePosition?: 'left' | 'right';
   chatboxBackgroundUser?: string;
   chatboxBackgroundBot?: string;
@@ -83,6 +84,7 @@ const initChatWidget = (config: WidgetConfig = {}) => {
     positionTop = '',
     positionBottom = '',
     timeFontSize= '',
+    timeFontColor= '',
     timePosition= 'right',
     chatboxBackgroundUser= '',
     chatboxBackgroundBot= '',
@@ -138,6 +140,7 @@ const initChatWidget = (config: WidgetConfig = {}) => {
       positionTop,
       positionBottom,
       timeFontSize,
+      timeFontColor,
       timePosition,
       chatboxBackgroundUser,
       chatboxBackgroundBot,
@@ -189,6 +192,7 @@ if (typeof window !== 'undefined') {
           positionTop: script.getAttribute('data-position-top') || undefined,
           positionBottom: script.getAttribute('data-position-bottom') || undefined,
           timeFontSize: script.getAttribute('data-time-font-size') || undefined,
+          timeFontColor: script.getAttribute('data-time-font-color') || undefined,
           timePosition: (script.getAttribute('data-time-position') as 'left' | 'right') || 'right',
           chatboxBackgroundUser: script.getAttribute('data-chatbox-background-user') || undefined,
           chatboxBackgroundBot: script.getAttribute('data-chatbox-background-bot') || undefined,

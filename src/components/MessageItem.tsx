@@ -23,6 +23,7 @@ interface MessageItemProps {
   userIcon?: string;
   fontSize?: string;
   timeFontSize?: string;
+  timeFontColor?: string;
   timePosition?: 'left' | 'right';
   chatboxBackgroundUser?: string;
   chatboxBackgroundBot?: string;
@@ -43,6 +44,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
   userIcon = '',
   fontSize = '',
   timeFontSize = '',
+  timeFontColor = '',
   timePosition = 'right',
   chatboxBackgroundUser = '',
   chatboxBackgroundBot = '',
@@ -65,8 +67,9 @@ const MessageItem: React.FC<MessageItemProps> = ({
   const userIconSrc = userIcon || userIconDefault;
   const botIconSrc = botIcon || botIconDefault;
   const fontSizeStyle = fontSize ? { fontSize: fontSize, lineHeight: fontSize } : {};
-  const timeFontSizeStyle = {
+  const timeStyle = {
     ...(timeFontSize ? { fontSize: timeFontSize } : {}),
+    ...(timeFontColor ? { color: timeFontColor } : {}),
     ...(timePosition ? { textAlign: timePosition } : {}),
   };
   const isUser = message.isUser;
@@ -152,7 +155,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
         </div><p className={`
           text-xs
           ${message.isUser ? 'text-gray-700' : (theme === 'dark' ? 'text-white' : 'text-gray-600')}
-        `} style={timeFontSizeStyle}>
+        `} style={timeStyle}>
           {formatTime(message.timestamp)}
         </p></div>
     </div>

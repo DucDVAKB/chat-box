@@ -158,6 +158,10 @@
   padding: 12px;
 }
 
+.status {
+  margin-right: 0.25rem;
+}
+
 /* Glassmorphism effect for dark theme */
 .chat-popup.dark-theme {
   background: rgba(17, 24, 39, 0.95);

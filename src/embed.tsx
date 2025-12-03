@@ -21,6 +21,8 @@ interface WidgetConfig {
   secondaryColor?: string;
   titleFontColor?: string;
   titleHeight?: string;
+  subtitleFontSize?: string;
+  subtitleFontColor?: string;
   status?: boolean;
   welcomeMessage?: string;
   showIcon?: boolean;
@@ -73,6 +75,8 @@ const initChatWidget = (config: WidgetConfig = {}) => {
     secondaryColor = '',
     titleFontColor = '',
     titleHeight = '',
+    subtitleFontSize = '',
+    subtitleFontColor = '',
     showIcon = false,
     botIcon = '',
     userIcon = '',
@@ -129,6 +133,8 @@ const initChatWidget = (config: WidgetConfig = {}) => {
       secondaryColor,
       titleFontColor,
       titleHeight,
+      subtitleFontSize,
+      subtitleFontColor,
       showIcon,
       botIcon,
       userIcon,
@@ -181,6 +187,8 @@ if (typeof window !== 'undefined') {
           secondaryColor: script.getAttribute('data-secondary-color') || undefined,
           titleFontColor: script.getAttribute('data-title-font-color') || undefined,
           titleHeight: script.getAttribute('data-title-height') || undefined,
+          subtitleFontSize: script.getAttribute('data-subtitle-font-size') || undefined,
+          subtitleFontColor: script.getAttribute('data-subtitle-font-color') || undefined,
           showIcon: script.getAttribute('data-show-icon') === 'true' || false,
           botIcon: script.getAttribute('data-bot-icon') || undefined,
           userIcon: script.getAttribute('data-user-icon') || undefined,

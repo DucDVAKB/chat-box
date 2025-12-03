@@ -24,6 +24,8 @@ interface ChatPopupProps {
   secondaryColor?: string;
   titleFontColor?: string;
   titleHeight?: string;
+  subtitleFontSize?: string;
+  subtitleFontColor?: string;
   showIcon?: boolean;
   botIcon?: string;
   userIcon?: string;
@@ -58,6 +60,8 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   secondaryColor = '',
   titleFontColor = '',
   titleHeight = '',
+  subtitleFontSize = '',
+  subtitleFontColor = '',
   showIcon = false,
   botIcon = '',
   userIcon = '',
@@ -116,6 +120,10 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
     ...(titleFontSize ? { fontSize: `${titleFontSize}` } : {}),
     ...(titleFontColor ? { color: `${titleFontColor}` } : {}),
   };
+    const subtitleTextStyle = {
+    ...(subtitleFontSize ? { fontSize: `${subtitleFontSize}` } : {}),
+    ...(subtitleFontColor ? { color: `${subtitleFontColor}` } : {}),
+  };
   
 
   return (
@@ -135,11 +143,11 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
               <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
             </svg>
           </div>
-          <div className="flex ">
-            <h3 className="font-semibold text-base text-white m-0"  style={titleTextStyle}>{title ? title : t('chat.title')}</h3>
-            {status && (<div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <p className="text-xs text-white/90">{t('chat.online')}</p>
+          <div className="flex flex-col">
+            <h3 className="font-semibold text-base text-white m-0 title"  style={titleTextStyle}>{title ? title : t('chat.title')}</h3>
+            {status && (<div className="flex items-center space-x-1 subtitle">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse status"></div>
+              <p className="text-xs text-white/90" style={subtitleTextStyle}>{t('chat.online')}</p>
             </div>)}
           </div>
         </div>

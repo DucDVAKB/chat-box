@@ -26,6 +26,8 @@ interface ChatWidgetProps {
   secondaryColor?: string;
   titleFontColor?: string;
   titleHeight?: string;
+  subtitleFontSize?: string;
+  subtitleFontColor?: string;
   showIcon?: boolean;
   botIcon?: string;
   userIcon?: string;
@@ -66,6 +68,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   secondaryColor = '',
   titleFontColor = '',
   titleHeight = '',
+  subtitleFontSize = '',
+  subtitleFontColor = '',
   showIcon = false,
   botIcon = '',
   userIcon = '',
@@ -226,6 +230,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           secondaryColor={secondaryColor}
           titleFontColor={titleFontColor}
           titleHeight={titleHeight}
+          subtitleFontSize={subtitleFontSize}
+          subtitleFontColor={subtitleFontColor}
           showIcon={showIcon}
           botIcon={botIcon}
           userIcon={userIcon}

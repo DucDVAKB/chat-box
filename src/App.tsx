@@ -46,7 +46,7 @@ function App() {
         userId="BaNaNe"
         conversationId=""
         welcomeMessage="Konnichiwa! Watashi wa AKB48 no chatbot desu. Go shitsumon ga arimasu ka?"
-        status={false}
+        status={true}
         title="AKB Chatbot"
         showIcon={true}
         fontSize="15px"
@@ -57,12 +57,13 @@ function App() {
         titleHeight='55px'
         titleFontSize='15px'
         timeFontSize='20px'
-        timeFontColor='blue'
+        timeFontColor='white'
         timePosition='right'
         paddingChatbox='10px'
         mainColor='#ff4a4a'
         secondaryColor='violet'
         titleFontColor='white'
+        subtitleFontColor='black'
         chatboxBackgroundBot='blueviolet'
         chatboxBackgroundUser='#61ffea'
         chatboxTextColorBot='white'

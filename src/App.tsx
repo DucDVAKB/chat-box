@@ -52,7 +52,7 @@ function App() {
         fontSize="15px"
         positionRight="10px"
         positionBottom="10px"
-        chatboxWidth='399px'
+        chatboxWidth='500px'
         chatboxHeight='399px'
         titleHeight='55px'
         titleFontSize='15px'

@@ -44,6 +44,7 @@ interface ChatPopupProps {
   chatboxTextColorDarkUser?: string;
   chatboxTextColorDarkBot?: string;
   paddingChatbox?: string;
+  position?: 'bottom-right' | 'bottom-left';
 }
 
 const ChatPopup: React.FC<ChatPopupProps> = ({
@@ -80,10 +81,25 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   chatboxTextColorDarkUser= '',
   chatboxTextColorDarkBot= '',
   paddingChatbox= '',
+  position = 'bottom-right',
 }) => {
   const { t } = useTranslation();
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // State và refs cho resize
+  const [width, setWidth] = useState(() => {
+    if (chatboxWidth) {
+      const numValue = parseInt(chatboxWidth);
+      return isNaN(numValue) ? 400 : numValue;
+    }
+    return 400;
+  });
+  const [isResizing, setIsResizing] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [startWidth, setStartWidth] = useState(0);
+  const chatboxRef = useRef<HTMLDivElement>(null);
+  const resizeHandleRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -92,6 +108,77 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Effect để khởi tạo width từ prop
+  useEffect(() => {
+    if (chatboxWidth) {
+      const numValue = parseInt(chatboxWidth);
+      if (!isNaN(numValue)) {
+        setWidth(numValue);
+      }
+    }
+  }, [chatboxWidth]);
+
+  // Handlers cho resize
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isResizing || !chatboxRef.current) return;
+      
+      let newWidth: number;
+      const deltaX = e.clientX - startX;
+      
+      // Nếu chat box ở góc phải, resize từ bên trái
+      // Kéo sang trái (deltaX < 0) → tăng độ rộng
+      // Kéo sang phải (deltaX > 0) → giảm độ rộng
+      if (position === 'bottom-right') {
+        newWidth = startWidth - deltaX;
+      } else {
+        // Nếu chat box ở góc trái, resize từ bên phải
+        // Kéo sang phải (deltaX > 0) → tăng độ rộng
+        // Kéo sang trái (deltaX < 0) → giảm độ rộng
+        newWidth = startWidth + deltaX;
+      }
+      
+      // Giới hạn độ rộng tối thiểu và tối đa
+      const minWidth = 300;
+      const maxWidth = window.innerWidth - 50;
+      
+      if (newWidth >= minWidth && newWidth <= maxWidth) {
+        setWidth(newWidth);
+      } else if (newWidth < minWidth) {
+        setWidth(minWidth);
+      } else if (newWidth > maxWidth) {
+        setWidth(maxWidth);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+
+    if (isResizing) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = 'ew-resize';
+      document.body.style.userSelect = 'none';
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+  }, [isResizing]);
+
+  const handleResizeStart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (chatboxRef.current) {
+      setStartX(e.clientX);
+      setStartWidth(width);
+      setIsResizing(true);
+    }
+  };
 
   const handleSendMessage = (text: string) => {
     if (text.trim()) {
@@ -107,9 +194,10 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
     }
   };
   const chatboxStyle = {
-    ...(chatboxWidth ? { width: `${chatboxWidth}` } : {}),
+    width: `${width}px`,
     ...(chatboxHeight ? { height: `${chatboxHeight}` } : {}),
-    ...(secondaryColor ? { background: `${secondaryColor}` } : {})
+    ...(secondaryColor ? { background: `${secondaryColor}` } : {}),
+    position: 'relative' as const
   };
 
   const titleStyle = {
@@ -127,11 +215,30 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   
 
   return (
-    <div className={`
-      chat-popup animate-slide-up
-      ${theme === 'dark' ? 'dark-theme text-white' : 'bg-white text-gray-900'}
-      flex flex-col justify-between h-full
-    `} style={chatboxStyle}>
+    <div 
+      ref={chatboxRef}
+      className={`
+        chat-popup animate-slide-up
+        ${theme === 'dark' ? 'dark-theme text-white' : 'bg-white text-gray-900'}
+        flex flex-col justify-between h-full
+      `} 
+      style={chatboxStyle}
+    >
+      {/* Resize Handle - Đặt ở phía đối diện với góc màn hình */}
+      <div
+        ref={resizeHandleRef}
+        onMouseDown={handleResizeStart}
+        className={`
+          absolute top-0 w-2 h-full cursor-ew-resize z-50
+          hover:bg-blue-400/50 transition-colors duration-200
+          ${isResizing ? 'bg-blue-500' : 'bg-transparent'}
+          ${position === 'bottom-right' ? 'left-0' : 'right-0'}
+        `}
+        style={{
+          touchAction: 'none'
+        }}
+        title="Kéo để thay đổi độ rộng"
+      />
       {/* Header */}
       <div className={`
         chat-header

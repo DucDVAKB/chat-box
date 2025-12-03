@@ -104,7 +104,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
   };
 
   return (
-    <div className={`flex justify-start items-start ${message.isUser ? 'flex-row-reverse' : 'flex-row'} message-item gap-1`}>
+    <div className={`flex justify-start items-start ${message.isUser ? 'flex-row-reverse' : 'flex-row'} message-item gap-1 w-full`}>
       {showIcon && (
         <div className="flex items-center space-x-2 flex-shrink-0">
           <img src={message.isUser ? userIconSrc : botIconSrc} alt="Icon" className="w-9 h-9 rounded-full p-1 bg-gray-200" />
@@ -112,7 +112,7 @@ const MessageItem: React.FC<MessageItemProps> = ({
       )}
       <div className="w-full">
         <div className={`
-        messenge-context flex-1 max-w-xs lg:max-w-md px-2 py-3 rounded-2xl
+        messenge-context flex-1 w-full px-2 py-3 rounded-2xl
         ${message.isUser
             ? (theme === 'dark'
               ? 'bg-[#B8D4E8] text-gray-800'

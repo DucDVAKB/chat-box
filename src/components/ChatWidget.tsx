@@ -250,6 +250,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           chatboxTextColorDarkUser={chatboxTextColorDarkUser}
           chatboxTextColorDarkBot={chatboxTextColorDarkBot}
           paddingChatbox={paddingChatbox}
+          position={position}
         />
       )}
     </div>

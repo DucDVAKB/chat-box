@@ -229,9 +229,9 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
         ref={resizeHandleRef}
         onMouseDown={handleResizeStart}
         className={`
-          absolute top-0 w-2 h-full cursor-ew-resize z-50
+          absolute top-0 w-1 h-full cursor-ew-resize z-50
           hover:bg-blue-400/50 transition-colors duration-200
-          ${isResizing ? 'bg-blue-500' : 'bg-transparent'}
+          ${isResizing ? 'bg-blue-100' : 'bg-transparent'}
           ${position === 'bottom-right' ? 'left-0' : 'right-0'}
         `}
         style={{

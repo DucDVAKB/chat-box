@@ -35,21 +35,21 @@ const MessageInput: React.FC<MessageInputProps> = ({
           className={`
             w-full px-4 py-3 border-2 rounded-xl resize-none
             focus:outline-none focus:ring-2 focus:ring-[#A7C7E7] focus:border-transparent
-            transition-all duration-200 mt-[6px]
+            transition-all duration-200 mt-[6px] h-[50px] w-[50px]
             ${theme === 'dark' 
               ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
               : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
             }
             ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
           `}
-          style={{ minHeight: '44px', maxHeight: '120px' }}
+          style={{ minHeight: '50px', maxHeight: '120px' }}
         />
       </div>
       <button
         onClick={() => onSend(value)}
         disabled={disabled || !value.trim()}
         className={`
-          p-3 rounded-xl transition-all duration-200 shadow-md flex-shrink-0 h-[44px] w-[44px] flex items-center justify-center
+          p-3 rounded-xl transition-all duration-200 shadow-md flex-shrink-0 h-[50px] w-[50px] flex items-center justify-center
           ${disabled || !value.trim()
             ? 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none'
             : theme === 'dark'

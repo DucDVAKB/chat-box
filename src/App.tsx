@@ -46,7 +46,6 @@ function App() {
         userId="BaNaNe"
         conversationId=""
         welcomeMessage="Konnichiwa! Watashi wa AKB48 no chatbot desu. Go shitsumon ga arimasu ka?"
-        status={true}
         title="AKB Chatbot"
         showIcon={true}
         fontSize="15px"

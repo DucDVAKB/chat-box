@@ -23,7 +23,7 @@ interface WidgetConfig {
   titleHeight?: string;
   subtitleFontSize?: string;
   subtitleFontColor?: string;
-  status?: boolean;
+  subtitle?: string;
   welcomeMessage?: string;
   showIcon?: boolean;
   botIcon?: string;
@@ -68,7 +68,7 @@ const initChatWidget = (config: WidgetConfig = {}) => {
     userId = 'user-' + Date.now(),
     conversationId = '',
     welcomeMessage = '',
-    status = true,
+    subtitle = '',
     title = '',
     titleFontSize = '',
     mainColor = '',
@@ -126,7 +126,7 @@ const initChatWidget = (config: WidgetConfig = {}) => {
       userId,
       conversationId,
       welcomeMessage,
-      status,
+      subtitle,
       title,
       titleFontSize,
       mainColor,
@@ -180,7 +180,7 @@ if (typeof window !== 'undefined') {
           userId: script.getAttribute('data-user-id') || undefined,
           conversationId: script.getAttribute('data-conversation-id') || undefined,
           welcomeMessage: script.getAttribute('data-wecome-message') || undefined,
-          status: script.getAttribute('data-status') === 'true' || true,
+          subtitle: script.getAttribute('data-subtitle') || undefined,
           title: script.getAttribute('data-title') || undefined,
           titleFontSize : script.getAttribute('data-title-font-size') || undefined,
           mainColor: script.getAttribute('data-main-color') || undefined,

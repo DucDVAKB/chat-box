@@ -17,7 +17,7 @@ interface ChatPopupProps {
   onClose: () => void;
   refreshConversation: () => void;
   theme?: 'light' | 'dark';
-  status?: boolean;
+  subtitle?: string;
   title?: string;
   titleFontSize?: string;
   mainColor?: string;
@@ -54,7 +54,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
   onClose,
   refreshConversation,
   theme = 'light',
-  status = true,
+  subtitle = '',
   title = '',
   titleFontSize = '',
   mainColor = '',
@@ -252,10 +252,9 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
           </div>
           <div className="flex flex-col">
             <h3 className="font-semibold text-base text-white m-0 title"  style={titleTextStyle}>{title ? title : t('chat.title')}</h3>
-            {status && (<div className="flex items-center space-x-1 subtitle">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse status"></div>
-              <p className="text-xs text-white/90" style={subtitleTextStyle}>{t('chat.online')}</p>
-            </div>)}
+            <div className="flex items-center space-x-1 m-0 subtitle">
+              <p className="text-xs text-white/90" style={subtitleTextStyle}>{subtitle ? subtitle : t('chat.subtitle')}</p>
+            </div>
           </div>
         </div>
         <div>

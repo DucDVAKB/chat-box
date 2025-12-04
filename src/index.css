@@ -92,7 +92,7 @@
 }
 
 .chat-input div{
-  padding: 5px;
+  padding: 0px 5px;
 }
 
 .chat-input textarea{
@@ -158,8 +158,11 @@
   padding: 12px;
 }
 
-.status {
-  margin-right: 0.25rem;
+.title {
+  margin: 0px;
+}
+.subtitle {
+  margin: 0px;
 }
 
 /* Glassmorphism effect for dark theme */

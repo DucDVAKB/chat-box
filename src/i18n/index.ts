@@ -6,6 +6,7 @@ const resources = {
     translation: {
       chat: {
         title: 'Trò chuyện',
+        subtitle: 'Trò chuyện cùng chúng tôi',
         placeholder: 'Nhập tin nhắn của bạn...',
         send: 'Gửi',
         typing: 'Đang nhập...',
@@ -20,6 +21,7 @@ const resources = {
     translation: {
       chat: {
         title: 'Chat',
+        subtitle: 'Chat with us',
         placeholder: 'Type your message...',
         send: 'Send',
         typing: 'Typing...',
@@ -34,6 +36,7 @@ const resources = {
     translation: {
       chat: {
         title: 'チャット',
+        subtitle: '私たちとチャットしましょう',
         placeholder: 'メッセージを入力してください...',
         send: '送信',
         typing: '入力中...',

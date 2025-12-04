@@ -19,7 +19,7 @@ interface ChatWidgetProps {
   userId?: string;
   conversationId?: string;
   welcomeMessage?: string;
-  status?: boolean;
+  subtitle?: string;
   title?: string;
   titleFontSize?: string;
   mainColor?: string;
@@ -61,7 +61,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   userId = 'user-' + Date.now(),
   conversationId: initialConversationId = '',
   welcomeMessage = '',
-  status = true,
+  subtitle = '',
   title = '',
   titleFontSize = '',
   mainColor = '',
@@ -223,7 +223,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             setConversationId('');
           }}
           theme={theme}
-          status={status}
+          subtitle={subtitle}
           title={title}
           titleFontSize={titleFontSize}
           mainColor={mainColor}

@@ -206,6 +206,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         onClick={toggleChat}
         theme={theme}
         mainColor={mainColor}
+        positionLeft={positionLeft}
+        positionRight={positionRight}
+        positionTop={positionTop}
+        positionBottom={positionBottom}
       />
       {isOpen && (
         <ChatPopup

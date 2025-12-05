@@ -5,10 +5,20 @@ interface ChatBubbleProps {
   onClick: () => void;
   theme?: 'light' | 'dark';
   mainColor?: string;
+  positionLeft?: string;
+  positionRight?: string;
+  positionTop?: string;
+  positionBottom?: string;
 }
 
-const ChatBubble: React.FC<ChatBubbleProps> = ({ isOpen, onClick, theme = 'light', mainColor='' }) => {
-  const colorStyle = {...(mainColor ? { background: mainColor } : {})};
+const ChatBubble: React.FC<ChatBubbleProps> = ({ isOpen, onClick, theme = 'light', mainColor='', positionLeft='', positionRight='', positionTop='', positionBottom='' }) => {
+  const buttonStyle = {
+    ...(mainColor ? { background: mainColor } : {}),
+    ...(positionLeft ? { left: `${positionLeft}` } : {}),
+    ...(positionRight ? { right: `${positionRight}` } : {}),
+    ...(positionTop ? { top: `${positionTop}` } : {}),
+    ...(positionBottom ? { bottom: `${positionBottom}` } : {}),
+  };
   return (
     <button
       onClick={onClick}
@@ -19,7 +29,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ isOpen, onClick, theme = 'light
         transition-all duration-300 ease-in-out
         focus:outline-none focus:ring-4 focus:ring-blue-300
       `}
-      style={colorStyle}
+      style={buttonStyle}
       aria-label="Mở chat"
     >
       {isOpen ? (

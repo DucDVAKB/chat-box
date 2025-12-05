@@ -35,7 +35,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
           className={`
             w-full px-4 py-3 border-2 rounded-xl resize-none
             focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent
-            transition-all duration-200 mt-[6px] h-[50px] w-[50px]
+            transition-all duration-200 mt-[7px] h-[50px] w-[50px]
             ${theme === 'dark' 
               ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
               : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'

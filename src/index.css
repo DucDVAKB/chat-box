@@ -18,6 +18,15 @@
   100% { opacity: 1; }
 }
 
+message-container h3, h4, h5, h6, p{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
 .animate-bounce-in {
   animation: bounceIn 0.3s ease-out;
 }
@@ -41,11 +50,13 @@
 .chat-bubble {
   width: 55px;
   height: 55px;
+  right: 10px;
+  bottom: 10px;
   border-radius: 50%;
   background: #4C83BA;
   box-shadow: 0 8px 24px rgba(167, 199, 231, 0.4);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  position: fixed;
 }
 
 .chat-bubble::before {
@@ -214,6 +225,12 @@
   align-items: flex-start;
   gap: 0.75rem;
 }
+
+.time{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  line-height: 1rem;
+} 
 
 .message-bubble {
   background-color: #B8D4E8;

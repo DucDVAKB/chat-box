@@ -67,10 +67,19 @@ const MessageItem: React.FC<MessageItemProps> = ({
   const userIconSrc = userIcon || userIconDefault;
   const botIconSrc = botIcon || botIconDefault;
   const fontSizeStyle = fontSize ? { fontSize: fontSize, lineHeight: fontSize } : {};
-  const timeStyle = {
+  const textAlignUser: React.CSSProperties['textAlign'] = timePosition === 'left' ? 'left' : 'right';
+  const textAlignBot: React.CSSProperties['textAlign'] = timePosition === 'left' ? 'right' : 'left';
+
+  const timeStyle: React.CSSProperties = {
     ...(timeFontSize ? { fontSize: timeFontSize } : {}),
     ...(timeFontColor ? { color: timeFontColor } : {}),
-    ...(timePosition ? { textAlign: timePosition } : {}),
+    textAlign: textAlignUser,
+  };
+
+  const timeStyleBot: React.CSSProperties = {
+    ...(timeFontSize ? { fontSize: timeFontSize } : {}),
+    ...(timeFontColor ? { color: timeFontColor } : {}),
+    textAlign: textAlignBot,
   };
   const isUser = message.isUser;
   const isDark = theme === 'dark';
@@ -153,9 +162,9 @@ const MessageItem: React.FC<MessageItemProps> = ({
             </ReactMarkdown>
           </div>
         </div><p className={`
-          text-xs
+          text-xs time
           ${message.isUser ? 'text-gray-700' : (theme === 'dark' ? 'text-white' : 'text-gray-600')}
-        `} style={timeStyle}>
+        `} style={message.isUser ? timeStyle : timeStyleBot}>
           {formatTime(message.timestamp)}
         </p></div>
     </div>

@@ -57,7 +57,7 @@ function App() {
         titleFontSize='15px'
         timeFontSize='20px'
         timeFontColor='white'
-        timePosition='right'
+        timePosition='left'
         paddingChatbox='10px'
         mainColor='#ff4a4a'
         secondaryColor='violet'

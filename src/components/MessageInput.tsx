@@ -34,7 +34,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
           rows={1}
           className={`
             w-full px-4 py-3 border-2 rounded-xl resize-none
-            focus:outline-none focus:ring-2 focus:ring-[#A7C7E7] focus:border-transparent
+            focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent
             transition-all duration-200 mt-[6px] h-[50px] w-[50px]
             ${theme === 'dark' 
               ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
@@ -51,10 +51,10 @@ const MessageInput: React.FC<MessageInputProps> = ({
         className={`
           p-3 rounded-xl transition-all duration-200 shadow-md flex-shrink-0 h-[50px] w-[50px] flex items-center justify-center
           ${disabled || !value.trim()
-            ? 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none'
+            ? 'bg-white text-gray-200 cursor-not-allowed shadow-none'
             : theme === 'dark'
-            ? 'bg-[#B8D4E8] hover:bg-[#A7C7E7] text-gray-800 hover:shadow-lg hover:scale-105 active:scale-95'
-            : 'bg-[#A7C7E7] hover:bg-[#8FB5D6] text-gray-800 hover:shadow-lg hover:scale-105 active:scale-95'
+            ? 'bg-white hover:bg-gray-100 text-gray-800 hover:shadow-lg hover:scale-105 active:scale-95'
+            : 'bg-white hover:bg-gray-100 text-gray-800 hover:shadow-lg hover:scale-105 active:scale-95'
           }
         `}
         aria-label={t('chat.send')}

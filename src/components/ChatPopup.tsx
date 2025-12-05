@@ -140,7 +140,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({
       }
       
       // Giới hạn độ rộng tối thiểu và tối đa
-      const minWidth = 300;
+      const minWidth = 399;
       const maxWidth = window.innerWidth - 50;
       
       if (newWidth >= minWidth && newWidth <= maxWidth) {
